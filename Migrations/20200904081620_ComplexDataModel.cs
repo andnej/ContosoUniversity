@@ -30,11 +30,21 @@ namespace ContosoUniversity.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "Title",
                 table: "Course",
-                maxLength: 3,
+                maxLength: 20,
                 nullable: true,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)",
                 oldNullable: true);
+
+            migrationBuilder.DropForeignKey(name: "FK_Enrollment_Course_CourseID", table: "Enrollment");
+            migrationBuilder.DropPrimaryKey(name: "PK_Course", table: "Course");
+
+            migrationBuilder.DropColumn(name: "CourseID", table: "Course");
+            migrationBuilder.AddColumn<int>(name: "CourseID", table: "Course", nullable: false);
+
+            migrationBuilder.AddPrimaryKey(name: "PK_Course", table: "Course", column: "CourseID");
+            migrationBuilder.AddForeignKey(name: "FK_Enrollment_Course_CourseID", column: "CourseID", table: "Enrollment", principalTable: "Course", principalColumn: "CourseID");
+
 
             migrationBuilder.AddColumn<int>(
                 name: "DepartmentID",
@@ -202,7 +212,7 @@ namespace ContosoUniversity.Migrations
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldMaxLength: 3,
+                oldMaxLength: 20,
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<int>(

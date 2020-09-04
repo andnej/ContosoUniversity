@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContosoUniversity.Migrations
 {
     [DbContext(typeof(SchoolContext))]
-    [Migration("20200904025755_ComplexDataModel")]
+    [Migration("20200904081620_ComplexDataModel")]
     partial class ComplexDataModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
