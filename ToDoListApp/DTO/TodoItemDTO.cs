@@ -22,5 +22,18 @@ namespace ToDoListApp.DTO
         public long Id { get; set; }
         public string Name { get; set; }
         public bool IsCompleted { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return obj is TodoItemDTO dTO &&
+                   Id == dTO.Id &&
+                   Name == dTO.Name &&
+                   IsCompleted == dTO.IsCompleted;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, Name, IsCompleted);
+        }
     }
 }
